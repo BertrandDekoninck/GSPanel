@@ -49,7 +49,9 @@
   NSMenu * buttonMenu;
   //NSMenuItemCell * itemCell;
   NSInteger index;
- 
+  NSInteger GSpanelBarHeight;
+  
+  GSpanelBarHeight=24;
 
   screenFrame = [[NSScreen mainScreen] frame]; 
   size = NSMakeSize (screenFrame.size.width,screenFrame.size.height);
@@ -66,7 +68,7 @@
   // Creation of the popup menu
 
   logo = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"Logo.tiff" ofType:nil] ];
-  logoButton= [[NSPopUpButton alloc] initWithFrame:NSMakeRect(6,0,30,22)];
+  logoButton= [[NSPopUpButton alloc] initWithFrame:NSMakeRect(6,0,30,GSpanelBarHeight)];
   [logoButton setBezelStyle: NSRegularSquareBezelStyle];
   [logoButton setShowsBorderOnlyWhileMouseInside: YES];
   [logoButton setTitle: @""];
@@ -87,7 +89,7 @@
 
   // Creation of the centered label
 
-  label = [[NSTextField alloc] initWithFrame: NSMakeRect (screenFrame.size.width/2-40,1,40,22)];
+  label = [[NSTextField alloc] initWithFrame: NSMakeRect (screenFrame.size.width/2-40,3,40,GSpanelBarHeight-2)];
   [label setSelectable: NO];
   [label setBezeled: NO];
   [label setDrawsBackground: NO];
@@ -96,7 +98,7 @@
   [label setAutoresizingMask: NSViewHeightSizable];
 
   //Creation of the window
-  rect = NSMakeRect (0, size.height-22, size.width, 22);
+  rect = NSMakeRect (0, size.height-GSpanelBarHeight, size.width, GSpanelBarHeight);
   unsigned int styleMask = NSBorderlessWindowMask;
   myWindow = [NSWindow alloc];
   myWindow = [myWindow initWithContentRect: rect
@@ -105,7 +107,7 @@
 				      defer:NO];
   [myWindow setTitle: @"GSPanel"];
   //  [myWindow setBackgroundColor: topBarColor];
-  [myWindow setAlphaValue: 0.3];
+  [myWindow setAlphaValue: 0.9];
   [[myWindow contentView] addSubview: logoButton];
   [myWindow setLevel: NSMainMenuWindowLevel-2];
   [myWindow setCanHide:NO];
@@ -128,7 +130,6 @@
   [logoButton release];
   [label release];
   [logo release];
-
 }
 
 - (void) applicationWillFinishLaunching:(NSNotification *)not
