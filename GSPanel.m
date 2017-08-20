@@ -11,7 +11,6 @@
   NSWindow *myWindow;
 }
 
-//- (void) openMyWindow: (id)sender;
 - (void) createWindow;
 - (void) launchXterm: (id)sender;
 - (void) applicationWillFinishLaunching: (NSNotification *)not;
@@ -25,12 +24,6 @@
   RELEASE (myWindow);
   [super dealloc];
 }
-
-//- (void) openMyWindow: (id)sender
-//{
-//  [self createWindow];
-//  [myWindow orderFront: self];
-//  }
 
 - (void) launchXterm: (id)sender
 {
@@ -47,7 +40,7 @@
   NSImage* logo;
   NSPopUpButton * logoButton;
   NSMenu * buttonMenu;
-  //NSMenuItemCell * itemCell;
+  NSMenuItemCell * cell;
   NSInteger index;
   NSInteger GSpanelBarHeight;
   
@@ -70,15 +63,17 @@
   logo = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"Logo.tiff" ofType:nil] ];
   logoButton= [[NSPopUpButton alloc] initWithFrame:NSMakeRect(6,0,30,GSpanelBarHeight)];
   [logoButton setBezelStyle: NSRegularSquareBezelStyle];
-  [logoButton setShowsBorderOnlyWhileMouseInside: YES];
   [logoButton setTitle: @""];
+  [logoButton setImage: logo];
   [logoButton setPullsDown: YES];
+  [logoButton setBordered: NO];//FixMe : this doesn't work with my popup button.
   buttonMenu =  [logoButton menu];
   NSMenuItem *menuItem = [logoButton itemAtIndex: 0];
-
   [menuItem setImage: logo];
-  //  [[menuItem image] setImagePosition: NSImageLeft];
 
+  //cell = [[NSMenuItemCell alloc] init]; 
+  //[cell setMenuItem: menuItem];
+  //[cell setImagePosition: NSImageLeft];  // FixMe : it seems that popup buttons can't use this to put the image at the left of the title.
 
   [buttonMenu addItemWithTitle:_(@"Launch xterm")
 			action: @selector (launchXterm:)
@@ -130,12 +125,15 @@
   [logoButton release];
   [label release];
   [logo release];
+
+  [cell release];
+
 }
 
 - (void) applicationWillFinishLaunching:(NSNotification *)not
 {
 
-   [self createWindow];
+  [self createWindow];
 }
 
 - (void) applicationDidFinishLaunching:(NSNotification *)not
