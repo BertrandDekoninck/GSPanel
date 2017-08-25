@@ -40,7 +40,7 @@
   NSImage* logo;
   NSPopUpButton * logoButton;
   NSMenu * buttonMenu;
-  NSMenuItemCell * cell;
+  // NSMenuItemCell * cell;
   NSInteger index;
   NSInteger GSpanelBarHeight;
   
@@ -126,7 +126,7 @@
   [label release];
   [logo release];
 
-  [cell release];
+  // [cell release];
 
 }
 
