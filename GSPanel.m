@@ -104,7 +104,7 @@
   //  [myWindow setBackgroundColor: topBarColor];
   [myWindow setAlphaValue: 0.9];
   [[myWindow contentView] addSubview: logoButton];
-  [myWindow setLevel: NSMainMenuWindowLevel-2];
+  [myWindow setLevel: NSMainMenuWindowLevel-1];
   [myWindow setCanHide:NO];
   [myWindow setHidesOnDeactivate:NO];
   [[myWindow contentView] addSubview: label];
