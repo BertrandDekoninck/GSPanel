@@ -65,18 +65,11 @@
   NSFont *menuFont=[NSFont boldSystemFontOfSize:0];
   NSMutableDictionary *attributes ;
   attributes = [NSMutableDictionary new];
-  [attributes setObject :menuFont
-		  forKey:NSFontAttributeName];
+  [attributes setObject:menuFont
+		 forKey:NSFontAttributeName];
   NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString: @"GNUstep" ];
-  [string setAttributes:attributes range:NSMakeRange(0,[string length])];
-   
-   stringSize=[string size];
-   
-
-   //printf("stringSize.height : %f \n", stringSize.height);//stringSize.width returns 1 for now. Why ?
- 
-
- 
+  [string setAttributes:attributes range:NSMakeRange(0,[string length])]; 
+  stringSize=[string size];
   screenFrame = [[NSScreen mainScreen] frame];
   screenSize = screenFrame.size;
   
@@ -142,7 +135,6 @@
   // [logo release];
   [label release];   
   [cell release];
-
 }
 
 
