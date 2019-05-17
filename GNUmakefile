@@ -5,6 +5,8 @@ ifeq (*(GNUSTEP_MAKEFILES),)
  (error  You need to set GNUSTEP_MAKEFILES before compiling!)
 endif
 
+GNUSTEP_INSTALLATION_DOMAIN = SYSTEM
+
 include $(GNUSTEP_MAKEFILES)/common.make
 
 APP_NAME= GSPanel
@@ -14,7 +16,7 @@ GSPanel_APPLICATION_ICON = Resources/Separator.tiff
 # Resource files
 #
 GSPanel_RESOURCE_FILES = \
-Resources/Separator.tiff \
+Resources/Separator.tiff\
 Resources/Logo.tiff \
 Resources/English.lproj \
 Resources/French.lproj
